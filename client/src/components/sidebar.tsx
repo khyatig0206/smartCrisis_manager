@@ -14,7 +14,8 @@ import {
   HelpCircle,
   Menu,
   Shield,
-  X
+  X,
+  Users
 } from 'lucide-react';
 import { cn } from '@/lib/utils';
 
@@ -27,6 +28,7 @@ interface SidebarProps {
 
 const sidebarItems = [
   { id: 'dashboard', label: 'Dashboard', icon: Shield },
+  { id: 'emergency-contacts', label: 'Emergency Contacts', icon: Users },
   { id: 'ai-settings', label: 'AI Settings', icon: Brain },
   { id: 'gesture-settings', label: 'Gesture Settings', icon: Hand },
   { id: 'automation-rules', label: 'Automation Rules', icon: Settings },

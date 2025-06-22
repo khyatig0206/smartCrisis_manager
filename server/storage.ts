@@ -95,7 +95,13 @@ export class MemStorage implements IStorage {
 
   async createEmergencyContact(contact: InsertEmergencyContact): Promise<EmergencyContact> {
     const id = this.currentContactId++;
-    const newContact: EmergencyContact = { ...contact, id };
+    const newContact: EmergencyContact = { 
+      ...contact, 
+      id,
+      email: contact.email || null,
+      relationship: contact.relationship || null,
+      isPrimary: contact.isPrimary || null
+    };
     this.emergencyContacts.set(id, newContact);
     return newContact;
   }
@@ -121,7 +127,13 @@ export class MemStorage implements IStorage {
 
   async createAlertLog(log: InsertAlertLog): Promise<AlertLog> {
     const id = this.currentLogId++;
-    const newLog: AlertLog = { ...log, id, timestamp: new Date() };
+    const newLog: AlertLog = { 
+      ...log, 
+      id, 
+      timestamp: new Date(),
+      message: log.message || null,
+      location: log.location || null
+    };
     this.alertLogs.set(id, newLog);
     return newLog;
   }

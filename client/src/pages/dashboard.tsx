@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { Sidebar } from '@/components/sidebar';
 import { EmergencyStatus } from '@/components/emergency-status';
+import { EmergencyContactsSection } from '@/components/emergency-contacts';
 import { useEmergency } from '@/hooks/use-emergency';
 import { useLocation } from '@/hooks/use-location';
 import { useVoice } from '@/hooks/use-voice';
@@ -39,6 +40,7 @@ export default function Dashboard() {
   const getSectionTitle = (section: string) => {
     const titles: Record<string, string> = {
       'dashboard': 'Dashboard',
+      'emergency-contacts': 'Emergency Contacts',
       'ai-settings': 'AI Settings',
       'gesture-settings': 'Gesture Settings',
       'automation-rules': 'Automation Rules',
@@ -55,6 +57,8 @@ export default function Dashboard() {
 
   const renderSection = () => {
     switch (activeSection) {
+      case 'emergency-contacts':
+        return <EmergencyContactsSection />;
       case 'ai-settings':
         return <AISettingsSection />;
       case 'gesture-settings':
