@@ -101,7 +101,16 @@ Crisis Manager is a full-stack emergency alert application built with React fron
 
 Preferred communication style: Simple, everyday language.
 
+## Recent Changes
+
+- June 22, 2025: Enhanced dashboard with gradient card styling and improved visual appeal
+- June 22, 2025: Added comprehensive emergency contact management system with form validation
+- June 22, 2025: Fixed keyboard event handling error in emergency trigger hook
+- June 22, 2025: Updated all settings section cards to use consistent dark gradient styling
+- June 22, 2025: Integrated emergency contacts into sidebar navigation for easy access
+
 ## Changelog
 
 Changelog:
-- June 22, 2025. Initial setup
+- June 22, 2025. Initial setup and core emergency system implementation
+- June 22, 2025. Enhanced UI with improved card styling and emergency contact management

@@ -80,7 +80,7 @@ export function useEmergency() {
   // Double-press V key detection
   useEffect(() => {
     const handleKeyPress = (event: KeyboardEvent) => {
-      if (event.key.toLowerCase() === 'v') {
+      if (event.key && event.key.toLowerCase() === 'v') {
         setKeyPressCount(prev => prev + 1);
         
         if (keyPressTimer) {

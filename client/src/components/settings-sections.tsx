@@ -42,7 +42,7 @@ export function AISettingsSection() {
         <p className="text-slate-400">Configure AI response behavior and tone for emergency situations</p>
       </div>
 
-      <Card className="crisis-surface border">
+      <Card className="bg-gradient-to-br from-slate-800 to-slate-900 border-slate-700">
         <CardHeader>
           <CardTitle className="text-white">Response Tone</CardTitle>
         </CardHeader>
@@ -67,7 +67,7 @@ export function AISettingsSection() {
         </CardContent>
       </Card>
 
-      <Card className="crisis-surface border">
+      <Card className="bg-gradient-to-br from-slate-800 to-slate-900 border-slate-700">
         <CardHeader>
           <CardTitle className="text-white">AI Behavior Settings</CardTitle>
         </CardHeader>
@@ -111,7 +111,7 @@ export function GestureSettingsSection() {
         <p className="text-slate-400">Configure gesture controls for emergency actions</p>
       </div>
 
-      <Card className="crisis-surface border">
+      <Card className="bg-gradient-to-br from-slate-800 to-slate-900 border-slate-700">
         <CardHeader>
           <CardTitle className="text-white">Gesture Assignments</CardTitle>
         </CardHeader>
@@ -161,10 +161,10 @@ export function AutomationRulesSection() {
         <p className="text-slate-400">Define triggers and automated responses</p>
       </div>
 
-      <Card className="crisis-surface border">
+      <Card className="bg-gradient-to-br from-slate-800 to-slate-900 border-slate-700">
         <CardHeader className="flex flex-row items-center justify-between">
           <CardTitle className="text-white">Active Rules</CardTitle>
-          <Button className="crisis-accent">Add Rule</Button>
+          <Button className="bg-[hsl(74,100%,40%)] hover:bg-[hsl(74,100%,35%)] text-black">Add Rule</Button>
         </CardHeader>
         <CardContent>
           <div className="space-y-3">
@@ -213,10 +213,10 @@ export function ChatHistorySection() {
         <p className="text-slate-400">View and export past conversations</p>
       </div>
 
-      <Card className="crisis-surface border">
+      <Card className="bg-gradient-to-br from-slate-800 to-slate-900 border-slate-700">
         <CardHeader className="flex flex-row items-center justify-between">
           <CardTitle className="text-white">Recent Activity</CardTitle>
-          <Button variant="outline" onClick={exportHistory}>
+          <Button variant="outline" onClick={exportHistory} className="border-slate-600 text-white hover:bg-slate-700">
             Export History
           </Button>
         </CardHeader>
@@ -290,7 +290,7 @@ export function ThemeAppearanceSection() {
         <p className="text-slate-400">Customize the visual appearance of your crisis manager</p>
       </div>
 
-      <Card className="crisis-surface border">
+      <Card className="bg-gradient-to-br from-slate-800 to-slate-900 border-slate-700">
         <CardHeader>
           <CardTitle className="text-white">Theme Mode</CardTitle>
         </CardHeader>
@@ -308,7 +308,7 @@ export function ThemeAppearanceSection() {
         </CardContent>
       </Card>
 
-      <Card className="crisis-surface border">
+      <Card className="bg-gradient-to-br from-slate-800 to-slate-900 border-slate-700">
         <CardHeader>
           <CardTitle className="text-white">Accent Color</CardTitle>
         </CardHeader>
@@ -357,7 +357,7 @@ export function LanguageVoiceSection() {
         <p className="text-slate-400">Configure language preferences and voice input settings</p>
       </div>
 
-      <Card className="crisis-surface border">
+      <Card className="bg-gradient-to-br from-slate-800 to-slate-900 border-slate-700">
         <CardHeader>
           <CardTitle className="text-white">Language Settings</CardTitle>
         </CardHeader>
@@ -379,7 +379,7 @@ export function LanguageVoiceSection() {
         </CardContent>
       </Card>
 
-      <Card className="crisis-surface border">
+      <Card className="bg-gradient-to-br from-slate-800 to-slate-900 border-slate-700">
         <CardHeader>
           <CardTitle className="text-white">Voice Input Mode</CardTitle>
         </CardHeader>
@@ -415,7 +415,7 @@ export function NotificationSettingsSection() {
         <p className="text-slate-400">Configure when and how you receive notifications</p>
       </div>
 
-      <Card className="crisis-surface border">
+      <Card className="bg-gradient-to-br from-slate-800 to-slate-900 border-slate-700">
         <CardHeader>
           <CardTitle className="text-white">Alert Preferences</CardTitle>
         </CardHeader>
@@ -461,7 +461,7 @@ export function PrivacyPermissionsSection() {
         <p className="text-slate-400">Manage app permissions and privacy settings</p>
       </div>
 
-      <Card className="crisis-surface border">
+      <Card className="bg-gradient-to-br from-slate-800 to-slate-900 border-slate-700">
         <CardHeader>
           <CardTitle className="text-white">App Permissions</CardTitle>
         </CardHeader>
@@ -501,7 +501,7 @@ export function DeviceIntegrationSection() {
         <p className="text-slate-400">Connect gestures to device functions</p>
       </div>
 
-      <Card className="crisis-surface border">
+      <Card className="bg-gradient-to-br from-slate-800 to-slate-900 border-slate-700">
         <CardHeader>
           <CardTitle className="text-white">Device Actions</CardTitle>
         </CardHeader>
@@ -553,7 +553,7 @@ export function HelpSupportSection() {
         <p className="text-slate-400">Get help and support for your crisis manager</p>
       </div>
 
-      <Card className="crisis-surface border">
+      <Card className="bg-gradient-to-br from-slate-800 to-slate-900 border-slate-700">
         <CardHeader>
           <CardTitle className="text-white">Frequently Asked Questions</CardTitle>
         </CardHeader>
@@ -573,7 +573,7 @@ export function HelpSupportSection() {
         </CardContent>
       </Card>
 
-      <Card className="crisis-surface border">
+      <Card className="bg-gradient-to-br from-slate-800 to-slate-900 border-slate-700">
         <CardHeader>
           <CardTitle className="text-white">Contact Support</CardTitle>
         </CardHeader>
