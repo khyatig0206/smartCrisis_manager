@@ -1,6 +1,7 @@
 import type { Express } from "express";
 import { createServer, type Server } from "http";
 import { storage } from "./storage";
+import { generateChatResponse, analyzeEmergencyPrompt, type ChatMessage } from "./openai";
 import { 
   insertEmergencyContactSchema, 
   insertAlertLogSchema, 
@@ -12,6 +13,15 @@ const triggerAlertSchema = z.object({
   alertType: z.enum(["keyboard", "voice", "manual"]),
   location: z.string().optional(),
   message: z.string().optional(),
+});
+
+const chatMessageSchema = z.object({
+  message: z.string().min(1, "Message cannot be empty"),
+  messages: z.array(z.object({
+    role: z.enum(["user", "assistant", "system"]),
+    content: z.string(),
+    timestamp: z.string().optional(),
+  })).optional(),
 });
 
 export async function registerRoutes(app: Express): Promise<Server> {
@@ -169,6 +179,67 @@ export async function registerRoutes(app: Express): Promise<Server> {
     } catch (error) {
       console.error("Error updating user settings:", error);
       res.status(400).json({ error: "Failed to update user settings" });
+    }
+  });
+
+  // AI Chat endpoints
+  app.post("/api/chat", async (req, res) => {
+    try {
+      const { message, messages } = chatMessageSchema.parse(req.body);
+      
+      // Get user settings for AI behavior
+      const userSettings = await storage.getUserSettings(DEMO_USER_ID);
+      
+      // Prepare conversation history
+      const conversationHistory: ChatMessage[] = (messages || []).map(msg => ({
+        role: msg.role,
+        content: msg.content,
+        timestamp: msg.timestamp ? new Date(msg.timestamp) : new Date()
+      }));
+      conversationHistory.push({
+        role: 'user',
+        content: message,
+        timestamp: new Date()
+      });
+
+      // Analyze if this might be an emergency
+      const emergencyAnalysis = await analyzeEmergencyPrompt(message);
+      
+      // Generate AI response
+      const response = await generateChatResponse(conversationHistory, userSettings);
+      
+      // If emergency detected, suggest emergency actions
+      if (emergencyAnalysis.isEmergency) {
+        await storage.createAlertLog({
+          userId: DEMO_USER_ID,
+          alertType: 'manual',
+          status: 'ai_detected',
+          message: `AI detected potential emergency: ${message}`,
+        });
+      }
+
+      res.json({
+        message: response.message,
+        timestamp: response.timestamp,
+        emergencyDetected: emergencyAnalysis.isEmergency,
+        severity: emergencyAnalysis.severity,
+        suggestedActions: emergencyAnalysis.suggestedActions
+      });
+    } catch (error) {
+      console.error("Error in AI chat:", error);
+      res.status(500).json({ error: "Failed to process chat message" });
+    }
+  });
+
+  // Emergency analysis endpoint
+  app.post("/api/analyze-emergency", async (req, res) => {
+    try {
+      const { message } = z.object({ message: z.string() }).parse(req.body);
+      const analysis = await analyzeEmergencyPrompt(message);
+      res.json(analysis);
+    } catch (error) {
+      console.error("Error analyzing emergency:", error);
+      res.status(500).json({ error: "Failed to analyze message" });
     }
   });
 

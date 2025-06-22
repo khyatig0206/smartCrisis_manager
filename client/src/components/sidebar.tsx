@@ -15,7 +15,8 @@ import {
   Menu,
   Shield,
   X,
-  Users
+  Users,
+  MessageCircle
 } from 'lucide-react';
 import { cn } from '@/lib/utils';
 
@@ -28,6 +29,7 @@ interface SidebarProps {
 
 const sidebarItems = [
   { id: 'dashboard', label: 'Dashboard', icon: Shield },
+  { id: 'ai-chat', label: 'AI Assistant', icon: MessageCircle },
   { id: 'emergency-contacts', label: 'Emergency Contacts', icon: Users },
   { id: 'ai-settings', label: 'AI Settings', icon: Brain },
   { id: 'gesture-settings', label: 'Gesture Settings', icon: Hand },
