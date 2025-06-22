@@ -258,7 +258,7 @@ export function AIChatSection() {
                 variant="outline"
                 size="sm"
                 onClick={() => setInputMessage("How do I add emergency contacts?")}
-                className="text-xs border-slate-600 text-slate-300 hover:bg-slate-700"
+                className="text-xs border-slate-600 text-gray-700 hover:bg-slate-500"
               >
                 How to add contacts?
               </Button>
@@ -266,7 +266,7 @@ export function AIChatSection() {
                 variant="outline"
                 size="sm"
                 onClick={() => setInputMessage("What should I do in a medical emergency?")}
-                className="text-xs border-slate-600 text-slate-300 hover:bg-slate-700"
+                className="text-xs border-slate-600 text-gray-700 hover:bg-slate-500"
               >
                 Medical emergency help
               </Button>
@@ -274,7 +274,7 @@ export function AIChatSection() {
                 variant="outline"
                 size="sm"
                 onClick={() => setInputMessage("How does the keyboard trigger work?")}
-                className="text-xs border-slate-600 text-slate-300 hover:bg-slate-700"
+                className="text-xs border-slate-600 text-gray-700 hover:bg-slate-500"
               >
                 Keyboard triggers
               </Button>
