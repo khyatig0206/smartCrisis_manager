@@ -31,13 +31,20 @@ export function useEmergency() {
     },
     onSuccess: (data) => {
       setEmergencyState({
-        status: 'safe',
+        status: 'sending',
         lastAlert: new Date()
       });
+      console.log("Alert sent successfully", data);
       toast({
         title: "Emergency Alert Sent",
         description: `Alert sent to ${data.contactsNotified} emergency contacts`,
       });
+      setTimeout(() => {
+    setEmergencyState({
+      status: 'safe',
+      lastAlert: new Date()
+    });
+  }, 3000);
       queryClient.invalidateQueries({ queryKey: ['/api/alert-logs'] });
     },
     onError: (error) => {
@@ -68,6 +75,7 @@ export function useEmergency() {
           lng: position.coords.longitude,
           accuracy: position.coords.accuracy
         });
+        console.log("Triggering alert with", params);
       } catch (error) {
         console.warn('Could not get location:', error);
       }

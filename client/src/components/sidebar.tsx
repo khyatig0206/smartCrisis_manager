@@ -19,6 +19,8 @@ import {
   MessageCircle
 } from 'lucide-react';
 import { cn } from '@/lib/utils';
+import { useEmergency } from '@/hooks/use-emergency';
+import { AlertTriangle, Loader2 } from 'lucide-react';
 
 interface SidebarProps {
   activeSection: string;
@@ -45,7 +47,32 @@ const sidebarItems = [
 
 export function Sidebar({ activeSection, onSectionChange, onEmergencyTrigger, isEmergencyTriggering }: SidebarProps) {
   const [isMobileOpen, setIsMobileOpen] = useState(false);
+  const { emergencyState } = useEmergency();
+const statusConfig = {
+    safe: {
+      label: 'Safe',
+      color: 'green',
+      icon: <Shield className="w-4 h-4 text-green-400" />,
+      ring: 'bg-green-500',
+      message: 'All systems operational',
+    },
+    alert: {
+      label: 'Alert',
+      color: 'yellow',
+      icon: <AlertTriangle className="w-4 h-4 text-yellow-400" />,
+      ring: 'bg-yellow-400',
+      message: 'Emergency triggered',
+    },
+    sending: {
+      label: 'Sending',
+      color: 'blue',
+      icon: <Loader2 className="w-4 h-4 text-blue-400 animate-spin" />,
+      ring: 'bg-blue-500',
+      message: 'Sending emergency alert',
+    },
+  };
 
+   const { label, color, icon, ring, message } = statusConfig[emergencyState.status];
   const SidebarContent = ({ onClose }: { onClose?: () => void }) => (
     <div className="flex flex-col h-full bg-[hsl(215,28%,17%)] border-r border-[hsl(217,32%,26%)]">
       {/* Header */}
@@ -64,15 +91,20 @@ export function Sidebar({ activeSection, onSectionChange, onEmergencyTrigger, is
       </div>
 
       {/* Emergency Status */}
-      <div className="p-6 border-b border-[hsl(217,32%,26%)]">
-        <div className="bg-green-900/30 border border-green-700 rounded-lg p-4">
-          <div className="flex items-center space-x-3">
-            <div className="w-3 h-3 bg-green-500 rounded-full animate-pulse"></div>
-            <span className="text-green-400 font-medium">Safe</span>
+       <div className="p-6 border-b border-[hsl(217,32%,26%)]">
+      <div className={`bg-${color}-900/30 border border-${color}-700 rounded-lg p-4`}>
+        <div className="flex items-center space-x-3">
+          <div className={`w-3 h-3 ${ring} rounded-full animate-pulse`}></div>
+          <div className="flex items-center space-x-2">
+            {icon}
+            <span className={`text-${color}-400 font-medium`}>{label}</span>
           </div>
-          <p className="text-xs text-slate-400 mt-2">Last updated: Just now</p>
         </div>
+        <p className="text-xs text-slate-400 mt-2">
+          Last updated: {emergencyState.lastAlert ? emergencyState.lastAlert.toLocaleTimeString() : 'Just now'}
+        </p>
       </div>
+    </div>
 
       {/* Navigation */}
       <nav className="flex-1 overflow-y-auto py-4">
