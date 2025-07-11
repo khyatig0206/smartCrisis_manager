@@ -88,13 +88,8 @@ http://localhost:5000
 ```
 ---
 
-## 👥 Developed By
 
-| Name                      | LinkedIn                                                                                  | GitHub                                  |
-|---------------------------|------------------------------------------------------------------------------------------|-----------------------------------------|
-| **Deependra Kumar** (Team Leader) | [LinkedIn](https://www.linkedin.com/in/deependra-kumar-784170256/)                         | [GitHub](https://github.com/Deep-1507)  |
-| **Ansh Kumar**            | [LinkedIn](https://www.linkedin.com/in/ansh-8052-)                                        | [GitHub](https://github.com/Ansh8052)   |
-| **Ritu Verma**            | [LinkedIn](https://www.linkedin.com/in/ritu-verma-98a3aa25a/)                             | [GitHub](https://github.com/Ritu29verma)|
-| **Khyati Gupta**          | [LinkedIn](https://www.linkedin.com/in/khyati-gupta-9748bb254/)                           | [GitHub](https://github.com/khyatig0206)|
+<img width="1366" height="768" alt="image" src="https://github.com/user-attachments/assets/c19dba7f-c3ca-40ec-919e-98b70cb3afb7" />
+<img width="1366" height="768" alt="image" src="https://github.com/user-attachments/assets/4267a157-73a1-4bc3-8c3d-8e509664df2f" />
+<img width="1366" height="768" alt="image" src="https://github.com/user-attachments/assets/047dcd0e-1546-4fce-8ed9-673a3b3bb7ea" />
 
----
